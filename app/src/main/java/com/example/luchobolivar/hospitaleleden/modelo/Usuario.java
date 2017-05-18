@@ -6,18 +6,20 @@ package com.example.luchobolivar.hospitaleleden.modelo;
 
 public class Usuario {
 
-    private int identificacion;
-    private String nombre;
-    private String apellido;
-    private String telefono;
-    private String email;
-    private String direccion;
-    private int genero;
-    private String username;
-    private String password;
-    private String rol;
+    public int identificacion;
+    public String nombre;
+    public String apellido;
+    public String telefono;
+    public String email;
+    public String direccion;
+    public int genero;
+    public String username;
+    public String password;
+    public String rol;
 
-    public Usuario(int identificacion, String nombre, String apellido, String telefono, String email, String direccion, int genero, String username, String password, String rol) {
+
+    public Usuario(int identificacion, String nombre, String apellido, String telefono, String email, String direccion,
+                   int genero, String username, String password, String rol) {
         this.identificacion = identificacion;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -29,6 +31,7 @@ public class Usuario {
         this.password = password;
         this.rol = rol;
     }
+
 
     public int getIdentificacion() {
         return identificacion;

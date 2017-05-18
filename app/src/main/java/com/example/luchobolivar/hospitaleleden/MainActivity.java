@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     public void validarUsuario(View v){
         usuario = etUsuario.getText().toString();
         password = etPass.getText().toString();
-        enlace = "http://192.168.19.2/serviciosWebHospital/login.php?USER_NAME="+ usuario +"&PASSWORD=" + password + "";
+        enlace = "http://192.168.43.17:8888/serviciosWebHospital/login.php?username="+ usuario +"&password=" + password + "";
         new loginUsuario().execute(enlace);
     }
 
@@ -57,23 +57,16 @@ public class MainActivity extends AppCompatActivity {
     public void LogInRol (){
         if(user.getRol().equals("admin")){
             Intent i = new Intent(getApplicationContext(), AdministradorActivity.class);
-
-            i.putExtra("usuario", usuario);
-            i.putExtra("password", password);
             startActivity(i);
 
         } else if (user.getRol().equals("paciente")){
 
             Intent i = new Intent(getApplicationContext(), PacienteActivity.class);
-            i.putExtra("usuario", usuario);
-            i.putExtra("password", password);
             startActivity(i);
 
         } else if (user.getRol().equals("personalMedico")){
 
             Intent i = new Intent(getApplicationContext(), PersonalMedicoActivity.class);
-            i.putExtra("usuario", usuario);
-            i.putExtra("password", password);
             startActivity(i);
 
         }
@@ -113,18 +106,17 @@ public class MainActivity extends AppCompatActivity {
             if (json.length()>0){
                 resultado = 1;
                 JSONObject row = json.getJSONObject(0);
-                int identificacion = row.getInt("NUMERO_IDENTIFICACION");
-                String nombre = row.getString("NOMBRE");
-                String apellido = row.getString("APELLIDO");
-                String username = row.getString("USER_NAME");
-                String password = row.getString("PASSWORD");
-                String telefono = row.getString("TELEFONO");
-                String email = row.getString("EMAIL");
-                String direccion = row.getString("DIRECCION");
-                int genero = row.getInt("GENERO_ID");
-                String rol = row.getString("ROL");
+                UsuarioLogIn.setIdentificacion(row.getInt("NUMERO_IDENTIFICACION"));
+                UsuarioLogIn.setNombre(row.getString("NOMBRE"));
+                UsuarioLogIn.setApellido(row.getString("APELLIDO"));
+                UsuarioLogIn.setTelefono(row.getString("TELEFONO"));
+                UsuarioLogIn.setEmail(row.getString("EMAIL"));
+                UsuarioLogIn.setDireccion(row.getString("DIRECCION"));
+                UsuarioLogIn.setUsername(row.getString("USER_NAME"));
+                UsuarioLogIn.setGenero(row.getInt("GENERO_ID"));
+                UsuarioLogIn.setPassword(row.getString("PASSWORD"));
+                UsuarioLogIn.setRol(row.getString("ROL"));
 
-                user = new Usuario(identificacion, nombre, apellido, telefono, email, direccion, genero, username, password, rol);
                 Log.e("usuario ", user.getNombre());
 
             }

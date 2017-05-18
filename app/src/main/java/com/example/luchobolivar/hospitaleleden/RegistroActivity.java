@@ -119,7 +119,7 @@ public class RegistroActivity extends AppCompatActivity {
     }
 
     public int obtenerDatosJSON(String respuesta) {
-        Log.e("Respuestas", respuesta);
+        Log.e("Respuesta", respuesta);
         int resultado = 0;
         try {
             JSONArray json = new JSONArray(respuesta);
